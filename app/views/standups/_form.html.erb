@@ -1,0 +1,33 @@
+<div class='card bg-light mb-3' >
+  <div class='card-header'>New Standup</div>
+  <div class='card-body'>
+    
+    <p class='card-text'>
+      <%= form_for(standup) do |f| %>
+        <% if standup.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(standup.errors.count, "error") %> prohibited this from being saved:</h2>
+
+            <ul>
+              <% standup.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="field">
+          <h5 class='card-title'>Name: <%=standup&.user&.name%></h5>
+        </div>
+        <div class="field">
+          <h5 class='card-title'><%= f.label :worklog %></h5>
+          <%= f.text_area :worklog, autofocus: true, autocomplete: "Worklog", class: 'form-control' %>
+        </div>
+        <div class="actions">
+          <%= f.submit class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </p>
+  </div>
+</div>
+<h2></h2>
+

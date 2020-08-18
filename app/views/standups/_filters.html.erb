@@ -1,0 +1,28 @@
+<%= form_tag(standups_path, :method => "get", remote: true) do %>  
+  <div class="form-row align-items-center">
+    <div class="col-auto">
+      <div class='datepicker'>      
+        <label class="" for="inlineFormInput">FromDate</label>
+        <%= date_field(:search, :from_date, class: 'form-control mb-2', placeholder: 'FromDate') %>
+      </div>
+    </div>
+    <div class="col-auto">
+      <div class='datepicker'>      
+        <label class="" for="inlineFormInputGroup">ToDate</label>
+        <%= date_field(:search, :to_date, class: 'form-control mb-2', placeholder: 'FromDate') %>
+      </div>
+    </div>
+    <div class="col-auto">
+        <label class="" for="inlineFormInputGroup">User</label>
+        <%= select_tag('search[user_id]', options_for_select(users_select_options), prompt: 'All Users', class: 'form-control mb-2') %>
+    </div>
+    <div class="col-auto">
+        <label class="" for="inlineFormInputGroup">Content</label>
+        <%= text_field(:search, :worklog, class: 'form-control mb-2', placeholder: 'Worklog') %>
+    </div>
+    <div class="col-auto">
+      <label class="" for="inlineFormInputGroup"></label>
+      <%= submit_tag "Filter", class: "btn btn-primary mb-2 form-control", data: { disable_with: "Filtering...!" }%>
+    </div>
+  </div>  
+<% end %>

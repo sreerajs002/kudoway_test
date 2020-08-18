@@ -1,0 +1,28 @@
+<%= link_to "Export CSV", standups_path(request.parameters.merge(format: "csv")) %>
+<div class='card bg-light mb-3' >
+  <div class='card-header'>Worklog History</div>
+  <div class='card-body'>
+    <div class='card-text'>
+      <table class="table table-striped">
+        <tr>
+          <th>Date</th>
+          <th>Name</th>
+          <th>Worklog</th>
+        </tr>
+        <%standups.each do |standup|%>
+          <tr>
+            <td>
+              <span class='m-r-sm'><%= formatted_date standup.created_at%></span>
+              <%= display_links(standup, current_user)%>
+              
+              </td>
+            <td><%= standup&.user&.name%></td>
+            <td><%= standup.worklog%></td>
+          </tr>
+        <%end%>
+      </table>
+    </div>
+  </div>
+</div>
+<h2></h2>
+
